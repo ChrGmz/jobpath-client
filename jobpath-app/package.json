@@ -11,8 +11,10 @@
     "e2e": "ng e2e"
   },
   "private": true,
-  "commitizen": {
-    "path": "cz-conventional-changelog"
+  "config": {
+    "commitizen": {
+      "path": "jobpath-app/node_modules/cz-conventional-changelog"
+    }
   },
   "dependencies": {
     "@angular/animations": "~11.1.2",
