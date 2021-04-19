@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "jobpath-e3d59": {
+      "hosting": {
+        "jobpath-app": [
+          "jobpath-e3d59"
+        ]
+      }
+    }
+  }
+}

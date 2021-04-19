@@ -1,0 +1,42 @@
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  margin-top: 10vh;
+  color: #587cff;
+  font-size: 64px;
+  font-weight: 700;
+}
+
+p {
+  color: #4f4f4f;
+  font-size: 40px;
+  line-height: normal;
+  text-align: center;
+  margin: 2vh;
+}
+
+section > * {
+  display: block;
+}
+
+img {
+  max-height: 263px;
+  max-width: 625px;
+  margin: 4vh;
+}
+
+button {
+  margin: 1vh;
+  max-width: 167px;
+  font-size: 24px;
+  font-weight: 700;
+  padding: 0.75rem 1rem;
+}
+
+#sign-up {
+  color: #587cff;
+}
