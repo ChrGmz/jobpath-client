@@ -1,0 +1,16 @@
+<div id="container">
+  <h1>Log In</h1>
+  <mat-form-field>
+    <mat-label>Email Address</mat-label>
+    <input mat-input type="text" cdkFocusInitial placeholder="email address" [(ngModel)]="data.email">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Password</mat-label>
+    <input mat-input type="password" cdkFocusInitial placeholder="password" [(ngModel)]="data.password">
+  </mat-form-field>
+  
+  <div mat-dialog-actions>
+    <button mat-raised-button color="primary" [mat-dialog-close]="data">Log In</button>
+    <button mat-raised-button color="accent" [mat-dialog-close]="">Cancel</button>
+  </div>
+</div>
