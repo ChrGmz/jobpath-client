@@ -1,32 +1,32 @@
 <div id="container">
   <h1>Sign Up!</h1>
   <mat-form-field>
-    <mat-label>Name</mat-label>
-    <input mat-input type="text" cdkFocusInitial placeholder="Jon Snow" [(ngModel)]="data.name">
-  </mat-form-field>
-  <mat-form-field>
     <mat-label>Email Address</mat-label>
-    <input mat-input type="email" cdkFocusInitial placeholder="jonsnow@gmail.com" [(ngModel)]="data.email">
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Desired Job Title</mat-label>
-    <input mat-input type="text" cdkFocusInitial placeholder="Full Stack Developer" [(ngModel)]="data.desiredJobTitle">
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Job Search Start Date</mat-label>
-    <input mat-input type="date" cdkFocusInitial placeholder="04/10/2020" [(ngModel)]="data.dateStartedLooking">
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Salary Target</mat-label>
-    <input mat-input type="number" cdkFocusInitial placeholder="80000" [(ngModel)]="data.salaryTarget">
+    <input matInput type="email" cdkFocusInitial [(ngModel)]="data.email">
   </mat-form-field>
   <mat-form-field>
     <mat-label>Password</mat-label>
-    <input mat-input type="password" cdkFocusInitial placeholder="password" [(ngModel)]="data.password">
+    <input matInput type="password" cdkFocusInitial [(ngModel)]="data.password">
   </mat-form-field>
   <mat-form-field>
     <mat-label>Confirm Password</mat-label>
-    <input mat-input type="password" cdkFocusInitial placeholder="password" [(ngModel)]="data.passwordConfirmation">
+    <input matInput type="password" cdkFocusInitial [(ngModel)]="data.passwordConfirmation">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label color="primary">Name</mat-label>
+    <input matInput type="text" cdkFocusInitial [(ngModel)]="data.name">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Desired Job Title</mat-label>
+    <input matInput type="text" cdkFocusInitial [(ngModel)]="data.desiredJobTitle">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Job Search Start Date</mat-label>
+    <input matInput type="date" cdkFocusInitial [(ngModel)]="data.dateStartedLooking">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Salary Target</mat-label>
+    <input matInput type="number" cdkFocusInitial [(ngModel)]="data.salaryTarget">
   </mat-form-field>
   
   <div mat-dialog-actions>
