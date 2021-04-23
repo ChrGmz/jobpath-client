@@ -5,17 +5,41 @@ import {
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
 
+import {ApplicationData} from '../../interfaces/applicationdata'; 
+import { InProgressData } from '../../interfaces/inprogressdata'; 
+import { OfferData } from '../../interfaces/offerdata'; 
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
 })
-export class DashboardComponent {
-  todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
+export class DashboardComponent implements OnInit {
+  applications: ApplicationData[] = [];
 
-  done = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
+  inProgress: ApplicationData[] = [];
 
-  drop(event: CdkDragDrop<string[]>) {
+  offers: ApplicationData[] = [];
+
+  ngOnInit(): void {
+    this.applications = [
+      {
+        _id: '123',
+        companyName: 'Tech Startup',
+        position: 'Software Dev',
+        method: 'LinkedIn',
+        status: 'No response',
+        date: new Date('2021-04-20'),
+        type: 'Tech interview',
+        feedback: 'Need to share my thoughts more',
+        employmentType: 'Full-time',
+        salary: 80000,
+        benefits: ['Vacation', 'insurance', 'sick-days'],
+      },
+    ];
+  }
+
+  drop(event: CdkDragDrop<ApplicationData[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,

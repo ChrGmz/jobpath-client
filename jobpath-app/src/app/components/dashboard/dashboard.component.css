@@ -1,9 +1,30 @@
-.example-container {
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap');
+
+* {
+  font-family: 'Montserrat',
+    sans-serif;
+
+}
+
+.container {
   width: 400px;
-  max-width: 100%;
-  margin: 0 25px 25px 0;
+  max-width: 90%;
+  /* margin: 0 25px 25px 0; */
+  margin: 2rem;
   display: inline-block;
+  flex: 1;
   vertical-align: top;
+}
+
+.wrapper {
+  margin: 2rem;
+  width: 90%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+h2 {
+  text-align: center;
 }
 
 .example-list {
@@ -20,7 +41,7 @@
   border-bottom: solid 1px #ccc;
   color: rgba(0, 0, 0, 0.87);
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
