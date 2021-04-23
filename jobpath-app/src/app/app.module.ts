@@ -15,6 +15,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { FirebaseService } from './services/firebase.service';
 import { SignupDialogComponent } from './components/signup-dialog/signup-dialog.component';
 import { SigninDialogComponent } from './components/signin-dialog/signin-dialog.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import { SigninDialogComponent } from './components/signin-dialog/signin-dialog.
     HomeComponent,
     SignupDialogComponent,
     SigninDialogComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,10 +37,9 @@ import { SigninDialogComponent } from './components/signin-dialog/signin-dialog.
     MatDialogModule,
     MatToolbarModule,
     MatButtonModule,
+    DragDropModule,
   ],
-  providers: [
-    FirebaseService,
-  ],
+  providers: [FirebaseService],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
