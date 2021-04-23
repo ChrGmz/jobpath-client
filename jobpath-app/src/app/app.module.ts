@@ -17,6 +17,7 @@ import { SignupDialogComponent } from './components/signup-dialog/signup-dialog.
 import { SigninDialogComponent } from './components/signin-dialog/signin-dialog.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { EditApplicationDialogComponent } from './components/edit-application-dialog/edit-application-dialog.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     SignupDialogComponent,
     SigninDialogComponent,
     DashboardComponent,
+    EditApplicationDialogComponent,
   ],
   imports: [
     BrowserModule,
