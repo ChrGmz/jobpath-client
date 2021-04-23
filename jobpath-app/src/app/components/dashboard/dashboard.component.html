@@ -7,11 +7,17 @@
       class="example-list"
       (cdkDropListDropped)="drop($event)">
       <div class="example-box" *ngFor="let item of applications" cdkDrag>
+        <h3 class="title">Company name</h3>
         <p>{{item.companyName}}</p>
-        <p>{{item.position}}</p>
-        <p>{{item.method}}</p>
-        <p>{{item.status}}</p>
+                <h3 class="title">Date applied</h3>
         <p>{{item.date.toLocaleDateString("en-US")}}</p>
+        <h3 class="title">Position</h3>
+        <p>{{item.position}}</p>
+        <h3 class="title">Application method</h3>
+        <p>{{item.method}}</p>
+        <h3 class="title">Status</h3>
+        <p>{{item.status}}</p>
+
       </div>
     </div>
   </div>
@@ -24,10 +30,15 @@
       class="example-list"
       (cdkDropListDropped)="drop($event)">
       <div class="example-box" *ngFor="let item of inProgress" cdkDrag>
+        <h3 class="title">Company name</h3>
         <p>{{item.companyName}}</p>
+        <h3 class="title">Interview date</h3>
         <p>{{item.date.toLocaleDateString("en-US")}}</p>
+        <h3 class="title">Status</h3>
         <p>{{item.status}}</p>
+        <h3 class="title">Interview type</h3>
         <p>{{item.type}}</p>
+        <h3 class="title">Feedback</h3>
         <p>{{item.feedback}}</p>
       </div>
     </div>
@@ -41,10 +52,13 @@
       class="example-list"
       (cdkDropListDropped)="drop($event)">
       <div class="example-box" *ngFor="let item of offers" cdkDrag>
+        <h3 class="title">Company name</h3>
         <p>{{item.companyName}}</p>
-        <p>{{item.date.toLocaleDateString("en-US")}}</p>
-        <p>{{item.status}}</p>
+        <h3 class="title">Employment type</h3>
+        <p>{{item.employmentType}}</p>
+        <h3 class="title">Annual salary</h3>
         <p>${{(item.salary).toLocaleString()}}</p>
+        <h3 class="title">Benefits</h3>
         <p>{{item.benefits}}</p>
       </div>
     </div>
