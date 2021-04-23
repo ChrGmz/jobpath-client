@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap');
+
 section {
   display: flex;
   flex-direction: column;
@@ -11,27 +13,39 @@ h1 {
   font-weight: 700;
 }
 
-p {
+section>* {
+  display: block;
+}
+
+.animatedImg {
+  animation: animate 5s infinite ease-in-out;
+}
+
+img {
+  max-height: 263px;
+  max-width: 700px;
+  margin: 2vh;
+}
+
+.logo {
+  max-height: 16em;
+}
+
+#desc {
   color: #4f4f4f;
+  font-family: 'Montserrat', sans-serif;
   font-size: 40px;
+  font-weight: 400;
   line-height: normal;
   text-align: center;
   margin: 2vh;
 }
 
-section > * {
-  display: block;
-}
-
-img {
-  max-height: 263px;
-  max-width: 625px;
-  margin: 4vh;
-}
-
 button {
   margin: 1vh;
   max-width: 167px;
+  font-family: 'Montserrat', sans-serif;
+
   font-size: 24px;
   font-weight: 700;
   padding: 0.75rem 1rem;
@@ -39,4 +53,19 @@ button {
 
 #sign-up {
   color: #587cff;
+}
+
+@keyframes animate {
+  0% {
+    transform: translate(.5%, .5%);
+  }
+
+  50% {
+    transform: translate(.5%, -.5%);
+  }
+
+  100% {
+    transform: translate(.5%, .5%);
+  }
+
 }
