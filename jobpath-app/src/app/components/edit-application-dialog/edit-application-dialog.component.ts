@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { ApplicationData } from 'src/app/interfaces/applicationdata';
+import { ApplicationInterface } from 'src/app/interfaces/application';
 
 @Component({
   selector: 'app-edit-application-dialog',
@@ -10,8 +10,24 @@ import { ApplicationData } from 'src/app/interfaces/applicationdata';
 export class EditApplicationDialogComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<EditApplicationDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: ApplicationData
+    @Inject(MAT_DIALOG_DATA) public data: ApplicationInterface
   ) {}
+
+  methods = [
+    'LinkedIn',
+    'Indeed',
+    'Glassdoor',
+    'Employer Website',
+    'Other'
+  ]
+
+  statuses = ['No Response', 'Interview', 'Offer', 'Rejected'];
+
+  types = [
+    'Full-Time',
+    'Part-Time',
+    'Contract'
+  ]
 
   cancel() {
     this.dialogRef.close();

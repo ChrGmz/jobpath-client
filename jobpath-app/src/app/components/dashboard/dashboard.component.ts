@@ -5,7 +5,7 @@ import {
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
 
-import {ApplicationData} from '../../interfaces/applicationdata'; 
+import { ApplicationInterface } from '../../interfaces/application'; 
 import { InProgressData } from '../../interfaces/inprogressdata'; 
 import { OfferData } from '../../interfaces/offerdata'; 
 import { MatDialog } from '@angular/material/dialog';
@@ -13,6 +13,8 @@ import { SigninDialogComponent } from '../signin-dialog/signin-dialog.component'
 
 import { SigninDialogData } from '../../interfaces/signindialogdata';
 import {EditApplicationDialogComponent} from '../edit-application-dialog/edit-application-dialog.component'
+import { InterviewInterface } from 'src/app/interfaces/interview';
+import { AppsService } from 'src/app/services/apps.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -20,36 +22,31 @@ import {EditApplicationDialogComponent} from '../edit-application-dialog/edit-ap
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-  constructor(private dialog: MatDialog) {}
+  constructor(
+    private dialog: MatDialog,
+    private _appsService: AppsService
+    ) {}
 
-  applications: ApplicationData[] = [];
+  applications: ApplicationInterface[] = [];
 
-  inProgress: ApplicationData[] = [];
+  inProgress: ApplicationInterface[] = [];
 
-  offers: ApplicationData[] = [];
+  offers: OfferData[] = [];
 
   ngOnInit(): void {
-    this.applications = [
-      {
-        _id: '123',
-        companyName: 'Tech Startup',
-        position: 'Software Dev',
-        method: 'LinkedIn',
-        status: 'No response',
-        date: new Date('2021-04-20'),
-        type: 'Tech interview',
-        feedback: 'Need to share my thoughts more',
-        employmentType: 'Full-time',
-        salary: 80000,
-        benefits: ['Vacation', 'insurance', 'sick-days'],
-      },
-    ];
+    this._appsService.getApps()
+      .subscribe(
+        res => this.applications = res,
+        err => console.error(err)
+      )
   }
 
-  editApplication(i: string): void {
+  editApplication(app: ApplicationInterface): void {
     const dialogRef = this.dialog.open(EditApplicationDialogComponent, {
       width: '270px',
-      data: {},
+      data: {
+        app
+      },
     });
     // dialogRef
     //   .afterClosed()
@@ -67,14 +64,14 @@ export class DashboardComponent implements OnInit {
     });
     // dialogRef
     //   .afterClosed()
-    //   .subscribe((result: SigninDialogData | undefined) => {
+    //   .subscribe((result: ApplicationInterface | undefined) => {
     //     if (result) {
-    //       this.authService.signin(result.email, result.password);
+    //       this._appsService.post.signin(result.email, result.password);
     //     }
     //   });
   }
 
-  drop(event: CdkDragDrop<ApplicationData[]>) {
+  drop(event: CdkDragDrop<ApplicationInterface[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,

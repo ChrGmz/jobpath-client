@@ -4,5 +4,6 @@ export interface OfferData {
   status: string;
   employmentType: string;
   salary: number;
-  benefits: string;
+  benefits: string[];
+  application_id: string;
 }

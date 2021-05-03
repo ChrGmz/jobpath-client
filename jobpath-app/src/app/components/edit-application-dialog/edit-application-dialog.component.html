@@ -7,19 +7,27 @@
   </mat-form-field>
   <mat-form-field>
     <mat-label>Position title</mat-label>
-    <input matInput type="password" cdkFocusInitial [(ngModel)]="data.position">
+    <input matInput type="text" cdkFocusInitial [(ngModel)]="data.position">
   </mat-form-field>
   <mat-form-field>
     <mat-label>Application method</mat-label>
-    <input matInput type="password" cdkFocusInitial [(ngModel)]="data.method">
+    <mat-select cdkFocusInitial [(ngModel)]="data.method">
+      <mat-option *ngFor="let method of methods" [value]="method">
+        {{ method }}
+      </mat-option>
+    </mat-select>
   </mat-form-field>
   <mat-form-field>
     <mat-label>Date applied</mat-label>
-    <input matInput type="password" cdkFocusInitial [(ngModel)]="data.date">
+    <input matInput type="date" cdkFocusInitial [(ngModel)]="data.date">
   </mat-form-field>
   <mat-form-field>
     <mat-label>Status</mat-label>
-    <input matInput type="password" cdkFocusInitial [(ngModel)]="data.status">
+    <mat-select cdkFocusInitial [(ngModel)]="data.status">
+      <mat-option *ngFor="let status of statuses" [value]="status">
+        {{ status }}
+      </mat-option>
+    </mat-select>
   </mat-form-field>
   
   <div mat-dialog-actions>
