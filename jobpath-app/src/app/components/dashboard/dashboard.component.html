@@ -1,5 +1,5 @@
 <div>
-  <button mat-raised-button color="accent" id="add-button">Add New App</button>
+  <button mat-raised-button color="accent" id="add-button" (click)="newApplication()">Add New App</button>
   <div cdkDropListGroup class = "wrapper">
     <div class="container">
   
@@ -11,17 +11,17 @@
         (cdkDropListDropped)="drop($event)">
         <div class="example-box" *ngFor="let item of applications" cdkDrag>
           <h3 class="title">Company name</h3>
-          <p>{{item.companyName}}</p>
+          <p>{{ item.companyName }}</p>
           <h3 class="title">Date applied</h3>
-          <p>{{item.date.toLocaleDateString("en-US")}}</p>
+          <p>{{ item.date | date }}</p>
           <h3 class="title">Position</h3>
-          <p>{{item.position}}</p>
+          <p>{{ item.position }}</p>
           <h3 class="title">Application method</h3>
-          <p>{{item.method}}</p>
+          <p>{{ item.method }}</p>
           <h3 class="title">Status</h3>
-          <p>{{item.status}}</p>
+          <p>{{ item.status }}</p>
           <button mat-raised-button color="primary" (click)="editApplication(item)">Edit</button>
-          <button mat-raised-button color="primary" (click)="newApplication('1')">New</button>
+          <button mat-raised-button color="primary" (click)="newApplication()">New</button>
         </div>
       </div>
     </div>
@@ -37,11 +37,11 @@
           <h3 class="title">Company name</h3>
           <p>{{item.companyName}}</p>
           <h3 class="title">Interview date</h3>
-          <p>{{item.date.toLocaleDateString("en-US")}}</p>
+          <p>{{item.date | date}}</p>
           <h3 class="title">Status</h3>
           <p>{{item.status}}</p>
           <button mat-raised-button color="primary" (click)="editApplication(item)">Edit</button>
-          <button mat-raised-button color="primary" (click)="newApplication('1')">New</button>
+          <button mat-raised-button color="primary" (click)="newApplication()">New</button>
         </div>
       </div>
     </div>

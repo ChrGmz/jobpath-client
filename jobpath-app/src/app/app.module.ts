@@ -28,6 +28,7 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { HttpClientModule } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
 
 
 
@@ -56,6 +57,7 @@ import { HttpClientModule } from '@angular/common/http';
     DragDropModule,
     MatSelectModule,
     MatDatepickerModule,
+    StoreModule.forRoot({}, {}),
   ],
   providers: [
     FirebaseService,

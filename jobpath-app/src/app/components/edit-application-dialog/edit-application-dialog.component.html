@@ -2,15 +2,15 @@
 
   <h1>Application</h1>
   <mat-form-field>
-    <mat-label>Company name</mat-label>
+    <mat-label>Company Name</mat-label>
     <input matInput type="text" cdkFocusInitial [(ngModel)]="data.companyName">
   </mat-form-field>
   <mat-form-field>
-    <mat-label>Position title</mat-label>
+    <mat-label>Position Title</mat-label>
     <input matInput type="text" cdkFocusInitial [(ngModel)]="data.position">
   </mat-form-field>
   <mat-form-field>
-    <mat-label>Application method</mat-label>
+    <mat-label>Application Method</mat-label>
     <mat-select cdkFocusInitial [(ngModel)]="data.method">
       <mat-option *ngFor="let method of methods" [value]="method">
         {{ method }}
@@ -18,8 +18,16 @@
     </mat-select>
   </mat-form-field>
   <mat-form-field>
-    <mat-label>Date applied</mat-label>
+    <mat-label>Date Applied</mat-label>
     <input matInput type="date" cdkFocusInitial [(ngModel)]="data.date">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Employment Type</mat-label>
+    <mat-select cdkFocusInitial [(ngModel)]="data.employmentType">
+      <mat-option *ngFor="let type of types" [value]="type">
+        {{ type }}
+      </mat-option>
+    </mat-select>
   </mat-form-field>
   <mat-form-field>
     <mat-label>Status</mat-label>
@@ -32,6 +40,6 @@
   
   <div mat-dialog-actions>
     <button mat-raised-button color="primary" [mat-dialog-close]="data">Save</button>
-    <button mat-raised-button color="accent" [mat-dialog-close]="">Cancel</button>
+    <button mat-raised-button color="accent" (click)="cancel()">Cancel</button>
   </div>
 </div>
