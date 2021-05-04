@@ -15,6 +15,7 @@ import { SigninDialogData } from '../../interfaces/signindialogdata';
 import {EditApplicationDialogComponent} from '../edit-application-dialog/edit-application-dialog.component'
 import { InterviewInterface } from 'src/app/interfaces/interview';
 import { AppsService } from 'src/app/services/apps.service';
+import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -24,7 +25,8 @@ import { AppsService } from 'src/app/services/apps.service';
 export class DashboardComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
-    private _appsService: AppsService
+    private _appsService: AppsService,
+    private _firebaseAuth: FirebaseService
     ) {}
 
   applications: ApplicationInterface[] = [];
@@ -36,7 +38,10 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this._appsService.getApps()
       .subscribe(
-        res => this.applications = res,
+        res => {
+          console.log(res);
+          this.applications = res;
+        },
         err => console.error(err)
       )
   }
@@ -44,31 +49,42 @@ export class DashboardComponent implements OnInit {
   editApplication(app: ApplicationInterface): void {
     const dialogRef = this.dialog.open(EditApplicationDialogComponent, {
       width: '270px',
-      data: {
-        app
-      },
+      data: app,
     });
-    // dialogRef
-    //   .afterClosed()
-    //   .subscribe((result: SigninDialogData | undefined) => {
-    //     if (result) {
-    //       this.authService.signin(result.email, result.password);
-    //     }
-    //   });
+    dialogRef
+      .afterClosed()
+      .subscribe((result: ApplicationInterface | undefined) => {
+        if (result) {
+          this._appsService.updateApp(result)
+            .subscribe(
+              res => {
+                this.applications[this.applications.indexOf(app)] = res;
+              },
+              err => console.error(err)
+            );
+        }
+      });
   }
 
-  newApplication(i: string): void {
+  newApplication(): void {
     const dialogRef = this.dialog.open(EditApplicationDialogComponent, {
       width: '270px',
       data: {},
     });
-    // dialogRef
-    //   .afterClosed()
-    //   .subscribe((result: ApplicationInterface | undefined) => {
-    //     if (result) {
-    //       this._appsService.post.signin(result.email, result.password);
-    //     }
-    //   });
+    dialogRef
+      .afterClosed()
+      .subscribe((result: ApplicationInterface | undefined) => {
+        if (result) {
+          this._appsService.createApp(result)
+            .subscribe(
+              res => this.applications.push(res),
+              err => {
+                console.error(err);
+                if (err.error.error.code === 'auth/id-token-expired') this._firebaseAuth.logout();
+              }
+            );
+        }
+      });
   }
 
   drop(event: CdkDragDrop<ApplicationInterface[]>) {

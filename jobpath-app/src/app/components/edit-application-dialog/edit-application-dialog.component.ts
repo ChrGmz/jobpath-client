@@ -8,6 +8,8 @@ import { ApplicationInterface } from 'src/app/interfaces/application';
   styleUrls: ['./edit-application-dialog.component.css'],
 })
 export class EditApplicationDialogComponent implements OnInit {
+  private backupApp: Partial<ApplicationInterface> = { ...this.data }
+
   constructor(
     public dialogRef: MatDialogRef<EditApplicationDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: ApplicationInterface
@@ -30,7 +32,18 @@ export class EditApplicationDialogComponent implements OnInit {
   ]
 
   cancel() {
-    this.dialogRef.close();
+    this.data = {
+      _id: this.backupApp._id || '',
+      companyName: this.backupApp.companyName || '',
+      position: this.backupApp.position || '',
+      method: this.backupApp.method || 'Other',
+      status: this.backupApp.status || 'No Response',
+      date: this.backupApp.date || '',
+      employmentType: this.backupApp.employmentType || 'Contract',
+      interviews: this.backupApp.interviews || [],
+      offers: this.backupApp.offers || []
+    };
+    this.dialogRef.close(this.data);
   }
 
   ngOnInit(): void {}

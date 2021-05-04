@@ -7,7 +7,7 @@ export interface ApplicationInterface {
   position: string;
   method: 'LinkedIn' | 'Indeed' | 'Glassdoor' | 'Employer Website' | 'Other';
   status: 'No Response' | 'Interview' | 'Offer' | 'Rejected';
-  date: Date;
+  date: string;
   employmentType: 'Full-Time' | 'Part-Time' | 'Contract';
   interviews?: InterviewInterface[],
   offers?: OfferData[];
